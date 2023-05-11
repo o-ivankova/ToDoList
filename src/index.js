@@ -1,19 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import AppHeader from './components/AppHeader';
-import SearchPanel from './components/SearchPanel';
-import ToDoList from './components/ToDoList'
+import { createRoot } from 'react-dom/client';
+import App from './components/App'
 
-console.log('Hello ToDoList');
+const root = createRoot(document.getElementById("root"));
 
-const App = () => {
-    return (
-        <div>
-            <AppHeader/>
-            <SearchPanel/>
-            <ToDoList />
-        </div>
-    )
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
