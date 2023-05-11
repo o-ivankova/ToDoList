@@ -3,8 +3,10 @@ import ToDoListItem from '../ToDoListItem';
 import './ToDoList.css';
 
 
+// eslint-disable-next-line react/prop-types
 const ToDoList = ( { elements } ) => {
 
+    // eslint-disable-next-line react/prop-types
     const list = elements.map((item) => {
      const { id, ...itemProps } = item;
       return (

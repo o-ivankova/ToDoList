@@ -1,6 +1,7 @@
 import React from 'react';
 import  './ToDoListItem.css';
 
+// eslint-disable-next-line react/prop-types
 const ToDoListItem = ({ content }) => {
   const [isDone, setIsDone] = React.useState(false);
   const [isImportant, setIsImportant] = React.useState(false);
