@@ -3,7 +3,7 @@ import AppHeader from '../AppHeader';
 import SearchPanel from '../SearchPanel';
 import ToDoList from '../ToDoList'
 import ItemStatusFilter from '../ItemStatusFilter';
-import './App.css';
+import './App.scss';
 
 const App = () => {
     const elements = [

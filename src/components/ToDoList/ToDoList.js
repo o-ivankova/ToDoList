@@ -1,12 +1,15 @@
 import React from 'react';
 import ToDoListItem from '../ToDoListItem';
-import './ToDoList.css';
+import './ToDoList.scss';
+import PropTypes from 'prop-types';
 
 
-// eslint-disable-next-line react/prop-types
+ToDoList.propTypes = {
+    elements: PropTypes.array,
+  };
+
 const ToDoList = ( { elements } ) => {
 
-    // eslint-disable-next-line react/prop-types
     const list = elements.map((item) => {
      const { id, ...itemProps } = item;
       return (
