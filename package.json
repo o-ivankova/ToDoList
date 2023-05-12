@@ -1,6 +1,6 @@
 {
   "name": "todolist",
-  "homepage": "https://o-ivankova.github.io/ToDoList",
+  "homepage": "http://o-ivankova.github.io/ToDoList",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
