@@ -7,20 +7,16 @@ import  './ToDoListItem.scss';
 }; */
 
 // eslint-disable-next-line react/prop-types
-const ToDoListItem = ({ content }) => {
+const ToDoListItem = ({ content, onDeleted }) => {
   const [isDone, setIsDone] = React.useState(false);
   const [isImportant, setIsImportant] = React.useState(false);
  
   const onContentClick = () => { 
-    setIsDone((prevState) => {
-      return !prevState;
-    })
+    setIsDone((prevState) => !prevState )
   };
 
   const onMarkImportant = () => {
-    setIsImportant((prevState) => {
-      return !prevState
-    });
+    setIsImportant((prevState) => !prevState)
   };
   
       return (
@@ -32,8 +28,8 @@ const ToDoListItem = ({ content }) => {
             <i className='fa fa-exclamation'/>
         </button>
 
-        <button type="button" className="btn btn-outline-danger btn-sm float-right">
-        <i className="fa fa-trash-o" />
+        <button type="button" className="btn btn-outline-danger btn-sm float-right" onClick={ onDeleted }>
+        <i className="fa-regular fa-xmark" />
       </button>
         </span>
     );

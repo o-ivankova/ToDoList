@@ -9,14 +9,17 @@ import './ToDoList.scss';
   }; */
 
 // eslint-disable-next-line react/prop-types
-const ToDoList = ( { elements } ) => {
+const ToDoList = ( { elements, onDeleted } ) => {
 
     // eslint-disable-next-line react/prop-types
     const list = elements.map((item) => {
      const { id, ...itemProps } = item;
       return (
         <li className='list-group-item' key={ id }>
-        <ToDoListItem { ...itemProps } />
+        <ToDoListItem
+        { ...itemProps }
+        onDeleted = { () => onDeleted(id) }
+        />
        </li>)
        });
 
