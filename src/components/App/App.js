@@ -8,9 +8,9 @@ import './App.scss';
 const App = () => {
     const elements = [
         { id: 1, content: "Drink Coffee", important: false },
-        { id: 2,content: "Learn React", important: true },
-        { id: 3,content: "Have dinner", important: false },
-        { id: 4,content: "Read a book", important: false },
+        { id: 2, content: "Learn React", important: true },
+        { id: 3, content: "Have dinner", important: false },
+        { id: 4, content: "Read a book", important: false },
     ];
     return (
         <div>
