@@ -9,7 +9,7 @@ import './ToDoList.scss';
   }; */
 
 // eslint-disable-next-line react/prop-types
-const ToDoList = ( { elements, onDeleted } ) => {
+const ToDoList = ( { elements, onDeleted, onToggleDone } ) => {
 
     // eslint-disable-next-line react/prop-types
     const list = elements.map((item) => {
@@ -19,6 +19,7 @@ const ToDoList = ( { elements, onDeleted } ) => {
         <ToDoListItem
         { ...itemProps }
         onDeleted = { () => onDeleted(id) }
+        onToggleDone = { () => onToggleDone(id) }
         />
        </li>)
        });

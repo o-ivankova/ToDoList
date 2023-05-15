@@ -1,5 +1,6 @@
 import React from 'react';
 import  './ToDoListItem.scss';
+import { BsX } from "react-icons/bs";
 //import PropTypes from 'prop-types';
 
 /* ToDoListItem.propTypes = {
@@ -7,29 +8,15 @@ import  './ToDoListItem.scss';
 }; */
 
 // eslint-disable-next-line react/prop-types
-const ToDoListItem = ({ content, onDeleted }) => {
-  const [isDone, setIsDone] = React.useState(false);
-  const [isImportant, setIsImportant] = React.useState(false);
- 
-  const onContentClick = () => { 
-    setIsDone((prevState) => !prevState )
-  };
+const ToDoListItem = ({ content, done, onDeleted, onToggleDone }) => {
 
-  const onMarkImportant = () => {
-    setIsImportant((prevState) => !prevState)
-  };
-  
       return (
-    <span span className={`todo-list-item ${isDone && ' done'} ${isImportant && ' important'}`}>
-    <span className='todo-list-item-content' onClick={ onContentClick }>
+    <span span className={`todo-list-item ${done && ' done'} d-flex`}>
+    <span className='todo-list-item-content d-flex' onClick={ onToggleDone }>
         { content }
         </span>
-        <button type="button" className="btn btn-outline-success btn-sm float-right" onClick={ onMarkImportant }>
-            <i className='fa fa-exclamation'/>
-        </button>
-
-        <button type="button" className="btn btn-outline-danger btn-sm float-right" onClick={ onDeleted }>
-        <i className="fa-regular fa-xmark" />
+        <button type="button" className="btn btn-sm float-right" onClick={ onDeleted }>
+        <BsX />
       </button>
         </span>
     );
