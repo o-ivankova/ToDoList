@@ -12,8 +12,8 @@ import './ToDoList.scss';
 const ToDoList = ( { elements, onDeleted, onToggleDone } ) => {
 
     // eslint-disable-next-line react/prop-types
-    const list = elements.map((item) => {
-     const { id, ...itemProps } = item;
+    const list = elements.map((el) => {
+     const { id, ...itemProps } = el;
       return (
         <li className='list-group-item' key={ id }>
         <ToDoListItem

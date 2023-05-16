@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppHeader from "../AppHeader";
 import AddItemPanel from "../AddItemPanel";
 import ToDoList from "../ToDoList";
@@ -6,17 +6,18 @@ import ItemStatusFilter from "../ItemStatusFilter";
 import "./App.scss";
 
 const App = () => {
-  const initialElements = [
-    { id: 1, content: "Drink Coffee", done: false },
-    { id: 2, content: "Learn React", done: false },
-    { id: 3, content: "Have dinner", done: false },
-    { id: 4, content: "Read a book", done: false },
-  ];
+  /* const initialElements = [
+    { id: 1, content: "Drink Coffee", completed: false },
+    { id: 2, content: "Learn React", completed: false },
+    { id: 3, content: "Have dinner", completed: false },
+    { id: 4, content: "Read a book", completed: false },
+  ]; */
 
-  const [elements, setElements] = React.useState(initialElements);
-  const [itemId, setItemId] = React.useState(100);
+  const [elements, setElements] = useState([]);
+  const [elementId, setElementId] = useState(1);
+  const [filter, setFilter] = useState("all"); //all, active, completed
 
-  const itemsLeftCount = elements.filter(item => !item.done).length;
+  const itemsLeftCount = elements.filter((el) => !el.completed).length;
 
   const deleteItem = (id) => {
     setElements((elements) => {
@@ -25,18 +26,20 @@ const App = () => {
         ...elements.slice(0, index),
         ...elements.slice(index + 1),
       ];
+
       return newElements;
     });
   };
 
   const addItem = (input) => {
-    setItemId((currentId) => {
-      return currentId++;
+    setElementId((currentId) => {
+      return ++currentId;
     });
 
     const newItem = {
       content: input,
-      id: itemId,
+      completed: false,
+      id: elementId,
     };
 
     setElements((elements) => {
@@ -50,8 +53,8 @@ const App = () => {
       const index = elements.findIndex((el) => el.id === id);
       const oldItem = elements[index];
 
-      const newItem = { ...oldItem, done: !oldItem.done };
-      
+      const newItem = { ...oldItem, completed: !oldItem.completed };
+
       const newArray = [
         ...elements.slice(0, index),
         newItem,
@@ -63,19 +66,66 @@ const App = () => {
   };
 
   const onAddItem = (input) => {
-      addItem(input);
+    addItem(input);
   };
+
+  const onFilterChange = (filter) => {
+    setFilter(filter);
+  };
+
+  const filterElements = (elements, filter) => {
+    switch (filter) {
+      case "all": {
+        return elements;
+      }
+      case "active": {
+        return elements.filter((el) => !el.completed);
+      }
+      case "completed": {
+        return elements.filter((el) => el.completed);
+      }
+      default: {
+        return elements;
+      }
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("elementId", JSON.stringify(elementId));
+  }, [elementId]);
+
+  useEffect(() => {
+    const elementId = JSON.parse(localStorage.getItem("elementId"));
+    if (elementId) {
+      setElementId(elementId);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("elements", JSON.stringify(elements));
+  }, [elements]);
+
+  useEffect(() => {
+    const elements = JSON.parse(localStorage.getItem("elements"));
+    if (elements) {
+      setElements(elements);
+    }
+  }, []);
 
   return (
     <div>
       <AppHeader />
-      <AddItemPanel onAddItem={ onAddItem } />
+      <AddItemPanel onAddItem={onAddItem} />
       <ToDoList
-        elements={elements}
+        elements={filterElements(elements, filter)}
         onDeleted={deleteItem}
         onToggleDone={onToggleDone}
       />
-      <ItemStatusFilter itemsLeftCount={ itemsLeftCount } />
+      <ItemStatusFilter
+        itemsLeftCount={itemsLeftCount}
+        filter={filter}
+        onFilterChange={onFilterChange}
+      />
     </div>
   );
 };

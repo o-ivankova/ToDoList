@@ -14,11 +14,6 @@
   user-select: none;
 }
 
-.todo-list-item.done .todo-list-item-content {
+.todo-list-item.completed .todo-list-item-content {
   text-decoration: line-through;
-}
-
-.todo-list-item.important .todo-list-item-content {
-  font-weight: bold;
-  color: steelblue;
 }

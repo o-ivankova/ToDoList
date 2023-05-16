@@ -1,5 +1,9 @@
-.search-input {
+.form-control {
     width: auto;
     flex-grow: 1;
     margin-right: 3px;
+  }
+
+  .input[type=text] {
+    outline:1px solid red; // or whatever
   }
