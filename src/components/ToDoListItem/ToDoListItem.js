@@ -1,17 +1,18 @@
 import React from "react";
 import "./ToDoListItem.scss";
 import { BsX } from "react-icons/bs";
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
-const ToDoListItem = ({ content, completed, onDeleted, onToggleDone }) => {
+const ToDoListItem = ({ content, completed, onDeleted, onCheckCompleted }) => {
   return (
-    <span
+    <div
       className={`todo-list-item ${completed && " completed"} d-flex`}
-      onClick={onToggleDone}
+      onClick={onCheckCompleted}
     >
-      <input type="checkbox" checked={completed} />
-      <div className="todo-list-item-content d-flex">{content}</div>
+      <div className="todo-list-item-content d-flex">
+        <input type="checkbox" checked={completed} />
+        {content}
+      </div>
       <button
         type="button"
         className="btn btn-sm float-right"
@@ -19,8 +20,15 @@ const ToDoListItem = ({ content, completed, onDeleted, onToggleDone }) => {
       >
         <BsX />
       </button>
-    </span>
+    </div>
   );
+};
+
+ToDoListItem.propTypes = {
+  content: PropTypes.string.isRequired,
+  completed: PropTypes.bool.isRequired,
+  onDeleted: PropTypes.func,
+  onCheckCompleted: PropTypes.func,
 };
 
 export default ToDoListItem;

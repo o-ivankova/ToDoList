@@ -1,8 +1,27 @@
 .app {
-    margin: 2rem auto 0 auto;
-    max-width: 400px;
-  }
-  
-  .top-panel {
-    margin: 1rem 0;
-  }
+  background: gray;
+  display: flex;
+  align-items: center;
+}
+
+.toDoList {
+  width: 30%;
+  margin: auto;
+  position: absolute;
+  top: 7%;
+  right: 35%;
+  left: 35%;
+}
+
+.div.background-img {
+  height: 30%;
+  width: 100%;
+  position: relative;
+  background-color: blueviolet;
+}
+
+.div.background-white {
+  height: 70%;
+  position: relative;
+  background-color: white;
+}

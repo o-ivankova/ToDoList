@@ -1,9 +1,15 @@
-.form-control {
-    width: auto;
-    flex-grow: 1;
-    margin-right: 3px;
-  }
+.add-item-panel {
+  margin-bottom: 20px;
+}
 
-  .input[type=text] {
-    outline:1px solid red; // or whatever
-  }
+input, input.form-control {
+  border: 1px solid #555;
+}
+
+input:focus, input.form-control:focus {
+    outline:1px solid #555 !important;
+    outline-width: 1px !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}

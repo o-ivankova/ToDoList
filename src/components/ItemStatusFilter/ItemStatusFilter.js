@@ -1,8 +1,23 @@
 import React from "react";
 import "./ItemStatusFilter.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteAllCompleted, changeFilter } from "../../redux/toDoListSlice";
 
-// eslint-disable-next-line react/prop-types
-const ItemStatusFilter = ({ itemsLeftCount, filter, onFilterChange }) => {
+const ItemStatusFilter = () => {
+  const elements = useSelector((state) => state.toDoList.elements);
+  const filter = useSelector((state) => state.toDoList.filter);
+  const dispatch = useDispatch();
+
+  const onDeleteCompleted = () => {
+    dispatch(deleteAllCompleted());
+  };
+
+  const itemsLeftCount = elements.filter((el) => !el.completed).length;
+
+  const onFilterChange = (filter) => {
+    dispatch(changeFilter(filter));
+  };
+
   const buttonsData = [
     { name: "all", label: "All" },
     { name: "active", label: "Active" },
@@ -11,7 +26,7 @@ const ItemStatusFilter = ({ itemsLeftCount, filter, onFilterChange }) => {
 
   const buttons = buttonsData.map(({ name, label }) => {
     const isActive = filter === name;
-    const clazz = isActive ? "btn-info" : "btn-outline-secondary";
+    const clazz = isActive ? "active" : "";
     return (
       <button
         type="button"
@@ -25,10 +40,13 @@ const ItemStatusFilter = ({ itemsLeftCount, filter, onFilterChange }) => {
   });
 
   return (
-    <div className="item-status-filter-panel inline-flex">
+    <span className="item-status-filter-panel">
       {itemsLeftCount} items left
       {buttons}
-    </div>
+      <button type="btn clear" onClick={() => onDeleteCompleted()}>
+        Clear completed
+      </button>
+    </span>
   );
 };
 

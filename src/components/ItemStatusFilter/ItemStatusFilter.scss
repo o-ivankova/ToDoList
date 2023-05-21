@@ -1,0 +1,20 @@
+.btn {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.btn.active {
+    font-weight: purple;
+}
+
+.btn.clear {
+    position: absolute;
+    right: 0;
+}
+
+.item-status-filter-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }

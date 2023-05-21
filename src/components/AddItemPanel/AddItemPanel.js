@@ -1,32 +1,39 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addElement } from "../../redux/toDoListSlice";
 import "./AddItemPanel.scss";
 
-// eslint-disable-next-line react/prop-types
-const AddItemPanel = ({ onAddItem }) => {
+const AddItemPanel = () => {
+  const dispatch = useDispatch();
+
   const [input, setInput] = React.useState("");
 
   const onInputChange = (e) => {
     setInput(e.target.value);
-    console.log(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onAddItem(input);
-    setInput('');
+    addItem(input);
+    setInput("");
+  };
+
+  const addItem = (input) => {
+    dispatch(addElement(input));
   };
 
   return (
-    <form className="idd-item-form d-flex" onSubmit={onSubmit}>
-      <input type="checkbox" disabled="" />
+    <div className='add-item-panel'>
+    <form className="add-item-form" onSubmit={onSubmit}>
       <input
         type="text"
         className="form-control"
         placeholder="Type your to do"
         onChange={onInputChange}
-        value = { input }
+        value={input}
       />
     </form>
+    </div>
   );
 };
 
