@@ -43,7 +43,7 @@ const ItemStatusFilter = () => {
     <span className="item-status-filter-panel">
       {itemsLeftCount} items left
       {buttons}
-      <button type="btn clear" onClick={() => onDeleteCompleted()}>
+      <button className="btn" onClick={() => onDeleteCompleted()}>
         Clear completed
       </button>
     </span>
