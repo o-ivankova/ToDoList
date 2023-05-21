@@ -14,6 +14,7 @@ export const toDoListSlice = createSlice({
   reducers: {
     addElement: (state, action) => {
       const input = action.payload;
+
       if (input !== "") {
         state.elementId += 1;
 
@@ -29,8 +30,7 @@ export const toDoListSlice = createSlice({
 
     deleteElement: (state, action) => {
       const id = action.payload;
-      const index = state.elements.findIndex((el) => el.id === id);
-      state.elements = state.elements.filter((el) => !el.id != index);
+      state.elements = state.elements.filter((el) => el.id !== id);
     },
 
     deleteAllCompleted: (state) => {

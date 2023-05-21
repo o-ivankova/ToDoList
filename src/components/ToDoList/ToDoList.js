@@ -28,7 +28,6 @@ const ToDoList = () => {
 
   const filteredElements = filterElements(elements, filter);
 
-  // eslint-disable-next-line react/prop-types
   const list = filteredElements.map((el) => {
     const { id, ...elementProps } = el;
 
