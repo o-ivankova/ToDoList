@@ -1,3 +1,7 @@
+.item-status-filter-panel {
+    margin-top: 10px;
+}
+
 .btn {
     padding: 0;
     border: none;
@@ -6,11 +10,6 @@
 
 .btn.active {
     font-weight: purple;
-}
-
-.btn.clear {
-    position: absolute;
-    right: 0;
 }
 
 .item-status-filter-panel {
