@@ -47,6 +47,14 @@ export const toDoListSlice = createSlice({
       const filter = action.payload;
       state.filter = filter;
     },
+
+    reorderElements: (state, action) => {
+      const result = action.payload;
+      if (!result.destination) return;
+
+      const [reorderedEl] = state.elements.splice(result.source.index, 1);
+      state.elements.splice(result.destination.index, 0, reorderedEl);
+    },
   },
 });
 
@@ -56,6 +64,7 @@ export const {
   checkCompleted,
   deleteAllCompleted,
   changeFilter,
+  reorderElements,
 } = toDoListSlice.actions;
 
 const persistConfig = {

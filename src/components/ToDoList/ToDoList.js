@@ -2,7 +2,12 @@ import React from "react";
 import ToDoListItem from "../ToDoListItem";
 import "./ToDoList.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteElement, checkCompleted } from '../../redux/toDoListSlice'
+import {
+  deleteElement,
+  checkCompleted,
+  reorderElements,
+} from "../../redux/toDoListSlice";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const ToDoList = () => {
   const elements = useSelector((state) => state.toDoList.elements);
@@ -26,10 +31,16 @@ const ToDoList = () => {
     }
   };
 
+  const handleOnDragEnd = (result) => {
+    dispatch(reorderElements(result));
+  };
+
   const filteredElements = filterElements(elements, filter);
 
   const list = filteredElements.map((el) => {
-    const { id, ...elementProps } = el;
+    const { id } = el;
+
+    const index = elements.findIndex((el) => el.id === id);
 
     const onDeleted = (id) => {
       dispatch(deleteElement(id));
@@ -40,17 +51,42 @@ const ToDoList = () => {
     };
 
     return (
-      <li className="list-group-item" key={id}>
-        <ToDoListItem
-          {...elementProps}
-          onDeleted={() => onDeleted(id)}
-          onCheckCompleted={() => onCheckCompleted(id)}
-        />
-      </li>
+      <Draggable key={id} draggableId={String(id)} index={index}>
+        {(provided) => (
+          <li
+            className="list-group-item"
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            <ToDoListItem
+              {...el}
+              index={index}
+              onDeleted={() => onDeleted(id)}
+              onCheckCompleted={() => onCheckCompleted(id)}
+            />
+          </li>
+        )}
+      </Draggable>
     );
   });
 
-  return <ul className="list-group">{list}</ul>;
+  return (
+    <DragDropContext onDragEnd={handleOnDragEnd}>
+      <Droppable droppableId='list'>
+        {(provided) => (
+          <ul
+            className='list'
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {list}
+            {provided.placeholder}
+          </ul>
+        )}
+      </Droppable>
+    </DragDropContext>
+  );
 };
 
 export default ToDoList;
