@@ -2,13 +2,16 @@
     margin-top: 10px;
 }
 
-.btn {
+.clear-button {
     border-style: hidden;
     background: none;
+    color: #363636;
+    margin-right: 5px;
+    font-size: 14px;
 }
 
-.btn.active {
-    font-weight: purple;
+.clear-button:hover {
+   color: #74269b;
 }
 
 .item-status-filter-panel {

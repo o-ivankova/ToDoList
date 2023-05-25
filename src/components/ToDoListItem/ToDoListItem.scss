@@ -1,40 +1,35 @@
 .todo-list-item {
-  width: 90vw;
-  display: grid;
-  height: 40px;
-  border: 2px solid var(--navy);
-  border-radius: 10px;
-  text-indent: 5px;
-  background-color: var(--grey);
-  color: var(--dark);
-  font-size: 20px;
-  font-family: "revert";
-  grid-template-columns: 10% 80% 10%;
-  align-content: center;
+  width: 100%;
+  margin: 0px;
+  line-height: 45px;
+  border-bottom-style: groove;
+  border-width: 1px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.todo-list-item button {
-  border-style: hidden;
-  border: 0px;
-  background-color: inherit;
-}
-
-.todo-list-item button:hover,
-.todo-list-item button:focus{
-  cursor: pointer;
- }
-
- .todo-list-item button:hover{
-  transform: translateY(-1px);
- }
-
-.todo-list-item-content {
-  margin-left: 1.25rem;
-  line-height: 35px;
+.todo-list-item .todo-list-item-content {
   cursor: pointer;
   user-select: none;
+  vertical-align: middle;
 }
 
 .todo-list-item.completed .todo-list-item-content {
   text-decoration: line-through;
 }
+
+.todo-list-item .delete-btn {
+  border-style: hidden;
+  border: 0px;
+  background-color: inherit;
+  vertical-align: middle;
+  text-align: right;
+  float: right;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.todo-list-item .delete-btn:hover,
+.todo-list-item .delete-btn:focus{
+  cursor: pointer;
+ }

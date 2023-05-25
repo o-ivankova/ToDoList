@@ -35,20 +35,20 @@ const ToDoList = () => {
     dispatch(reorderElements(result));
   };
 
+  const onDeleted = (id) => {
+    dispatch(deleteElement(id));
+  };
+
+  const onCheckCompleted = (id) => {
+    dispatch(checkCompleted(id));
+  };
+
   const filteredElements = filterElements(elements, filter);
 
   const list = filteredElements.map((el) => {
     const { id } = el;
 
     const index = elements.findIndex((el) => el.id === id);
-
-    const onDeleted = (id) => {
-      dispatch(deleteElement(id));
-    };
-
-    const onCheckCompleted = (id) => {
-      dispatch(checkCompleted(id));
-    };
 
     return (
       <Draggable key={id} draggableId={String(id)} index={index}>
@@ -73,10 +73,10 @@ const ToDoList = () => {
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <Droppable droppableId='list'>
+      <Droppable droppableId="list">
         {(provided) => (
           <ul
-            className='list'
+            className="list"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

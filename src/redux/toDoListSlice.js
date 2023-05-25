@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
   elements: [],
-  elementId: 0,
   filter: "all",
 };
 
@@ -16,12 +16,10 @@ export const toDoListSlice = createSlice({
       const input = action.payload;
 
       if (input !== "") {
-        state.elementId += 1;
-
         const newElement = {
           content: input,
           completed: false,
-          id: state.elementId,
+          id: uuidv4(),
         };
 
         state.elements.push(newElement);
