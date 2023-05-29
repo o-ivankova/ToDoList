@@ -4,8 +4,10 @@
   line-height: 45px;
   border-bottom-style: groove;
   border-width: 1px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
+  background-color: white;
 }
 
 .todo-list-item .todo-list-item-content {

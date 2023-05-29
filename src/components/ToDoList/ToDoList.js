@@ -1,7 +1,8 @@
 import React from "react";
 import ToDoListItem from "../ToDoListItem";
 import "./ToDoList.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { createSelector } from "@reduxjs/toolkit";
 import {
   deleteElement,
   checkCompleted,
@@ -10,26 +11,8 @@ import {
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const ToDoList = () => {
-  const elements = useSelector((state) => state.toDoList.elements);
-  const filter = useSelector((state) => state.toDoList.filter);
   const dispatch = useDispatch();
-
-  const filterElements = (elements, filter) => {
-    switch (filter) {
-      case "all": {
-        return elements;
-      }
-      case "active": {
-        return elements.filter((el) => !el.completed);
-      }
-      case "completed": {
-        return elements.filter((el) => el.completed);
-      }
-      default: {
-        return elements;
-      }
-    }
-  };
+  const state = useSelector((state) => state.toDoList);
 
   const handleOnDragEnd = (result) => {
     dispatch(reorderElements(result));
@@ -43,12 +26,36 @@ const ToDoList = () => {
     dispatch(checkCompleted(id));
   };
 
-  const filteredElements = filterElements(elements, filter);
+  const elements = (state) => state.elements;
+  const filter = (state) => state.filter;
+
+  const filterElements = createSelector(
+    elements,
+    filter,
+    (elements, filter) => {
+      switch (filter) {
+        case "all": {
+          return elements;
+        }
+        case "active": {
+          return elements.filter((el) => !el.completed);
+        }
+        case "completed": {
+          return elements.filter((el) => el.completed);
+        }
+        default: {
+          return elements;
+        }
+      }
+    }
+  );
+
+  const filteredElements = filterElements(state);
 
   const list = filteredElements.map((el) => {
     const { id } = el;
 
-    const index = elements.findIndex((el) => el.id === id);
+    const index = filteredElements.findIndex((el) => el.id === id);
 
     return (
       <Draggable key={id} draggableId={String(id)} index={index}>
