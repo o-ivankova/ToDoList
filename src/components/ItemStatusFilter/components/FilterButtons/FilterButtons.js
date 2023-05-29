@@ -1,4 +1,4 @@
-import React from "react";
+import React, { require } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { changeFilter } from "../../../../redux/toDoListSlice";
 import "./FilterButtons.scss";
@@ -17,13 +17,18 @@ const FilterButtons = () => {
     { name: "completed", label: "Completed" },
   ];
 
+  let classNames = require("classnames");
+
   const buttons = buttonsData.map(({ name, label }) => {
-    const isActive = filter === name;
-    const clazz = isActive ? "active" : "";
+    let btnClass = classNames({
+      "filter-button": true,
+      " active": filter === name,
+    });
+
     return (
       <button
         type="button"
-        className={`filter-button ${clazz}`}
+        className={btnClass}
         key={name}
         onClick={() => onFilterChange(name)}
       >

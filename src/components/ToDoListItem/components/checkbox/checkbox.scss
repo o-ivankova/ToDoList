@@ -1,31 +1,40 @@
 $bgcolor: #cc738a;
 $hovercolor: #b94966;
 
-.checkbox {
+%checkbox-shared {
+    outline: none;
     margin: 15px;
     width: 20px;                         
     height: 20px;                       
     border-radius: 50%;
     vertical-align: middle;
+    clip-path: circle(50% at 50% 50%);
+}
+
+.checkbox {
+    @extend %checkbox-shared;
     border: 2px solid LightGray;
     -webkit-appearance: none;
-    outline: none;
     cursor: pointer;
 }
 
 .checkbox:checked {
+    @extend %checkbox-shared;
     appearance: auto;
-    clip-path: circle(50% at 50% 50%);
     accent-color: $hovercolor;
-    outline: none;
   }
 
   .checkbox:hover {
+    @extend %checkbox-shared;
    border: 2px solid $hovercolor;
-   outline: none;
   }
 
   .checkbox:focus {
+    @extend %checkbox-shared;
     border: 2px solid LightGray;
-    outline: none;
+   }
+
+   .checkbox:focus:hover {
+    @extend %checkbox-shared;
+    border: 2px solid $hovercolor;
    }

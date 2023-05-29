@@ -1,11 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
-import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
-import { v4 as uuidv4 } from 'uuid';
+import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
+import { saveElements, saveFilter, getElements, getFilter } from "../repository/localStorageRepository";
 
 const initialState = {
-  elements: [],
-  filter: "all",
+  elements: getElements(),
+  filter: getFilter(),
 };
 
 export const toDoListSlice = createSlice({
@@ -23,27 +22,36 @@ export const toDoListSlice = createSlice({
         };
 
         state.elements.push(newElement);
+
+        saveElements(state.elements);
       }
     },
 
     deleteElement: (state, action) => {
       const id = action.payload;
       state.elements = state.elements.filter((el) => el.id !== id);
+
+      saveElements(state.elements);
     },
 
     deleteAllCompleted: (state) => {
       state.elements = state.elements.filter((el) => !el.completed);
+      saveElements(state.elements);
     },
 
     checkCompleted: (state, action) => {
       const id = action.payload;
       const index = state.elements.findIndex((el) => el.id === id);
       state.elements[index].completed = !state.elements[index].completed;
+
+      saveElements(state.elements);
     },
 
     changeFilter: (state, action) => {
       const filter = action.payload;
       state.filter = filter;
+
+      saveFilter(filter);
     },
 
     reorderElements: (state, action) => {
@@ -52,6 +60,8 @@ export const toDoListSlice = createSlice({
 
       const [reorderedEl] = state.elements.splice(result.source.index, 1);
       state.elements.splice(result.destination.index, 0, reorderedEl);
+
+      saveElements(state.elements);
     },
   },
 });
@@ -65,13 +75,9 @@ export const {
   reorderElements,
 } = toDoListSlice.actions;
 
-const persistConfig = {
-  key: "root",
-  storage,
-};
+export default toDoListSlice.reducer;
 
-const { reducer } = toDoListSlice;
+export const selectVisibleElements = createSelector(
+  (state) => state,
 
-export const persistedReducer = persistReducer(persistConfig, reducer);
-
-// export default reducer;
+);

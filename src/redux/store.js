@@ -1,11 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {persistedReducer} from "./toDoListSlice";
-import { persistStore } from 'redux-persist'
+import reducer from "./toDoListSlice";
 
 export const store = configureStore({
   reducer: {
-    toDoList: persistedReducer,
+    toDoList: reducer,
   },
 });
-
-export const persistor = persistStore(store);
