@@ -1,0 +1,19 @@
+$focusbordercolor: #ffc2bd;
+
+.add-item-panel {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border-style: groove;
+  border: 1px solid lightgrey;
+}
+
+input:focus, input.form-control:focus {
+    border: none;
+    outline: 1px solid $focusbordercolor;
+    outline-width: 1px !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}

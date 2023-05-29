@@ -1,0 +1,31 @@
+$bgcolor: #cc738a;
+$hovercolor: #b94966;
+
+.checkbox {
+    margin: 15px;
+    width: 20px;                         
+    height: 20px;                       
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 2px solid LightGray;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox:checked {
+    appearance: auto;
+    clip-path: circle(50% at 50% 50%);
+    accent-color: $hovercolor;
+    outline: none;
+  }
+
+  .checkbox:hover {
+   border: 2px solid $hovercolor;
+   outline: none;
+  }
+
+  .checkbox:focus {
+    border: 2px solid LightGray;
+    outline: none;
+   }
