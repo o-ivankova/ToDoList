@@ -1,6 +1,6 @@
-import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import { saveElements, saveFilter, getElements, getFilter } from "../repository/localStorageRepository";
+import { saveElements, saveFilter, getElements, getFilter } from "../repository/repository";
 
 const initialState = {
   elements: getElements(),
@@ -76,8 +76,3 @@ export const {
 } = toDoListSlice.actions;
 
 export default toDoListSlice.reducer;
-
-export const selectVisibleElements = createSelector(
-  (state) => state,
-
-);
