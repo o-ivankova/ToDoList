@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox tests snapshot test 1`] = `
+<input
+  checked={false}
+  className="checkbox"
+  data-testid="checkbox"
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          SyntheticBaseEvent {
+            "_reactName": "onChange",
+            "_targetInst": null,
+            "bubbles": true,
+            "cancelable": true,
+            "currentTarget": null,
+            "defaultPrevented": false,
+            "eventPhase": 3,
+            "isDefaultPrevented": [Function],
+            "isPropagationStopped": [Function],
+            "isTrusted": false,
+            "nativeEvent": MouseEvent {
+              "isTrusted": false,
+            },
+            "target": <input
+              class="checkbox"
+              data-testid="checkbox"
+              type="checkbox"
+            />,
+            "type": "change",
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  type="checkbox"
+/>
+`;

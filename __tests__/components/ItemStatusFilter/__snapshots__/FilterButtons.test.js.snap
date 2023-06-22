@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterButtons tests snapshot test 1`] = `
+<div
+  data-testid="filter-buttons"
+>
+  <button
+    className="filterButton"
+    onClick={[Function]}
+    type="button"
+  >
+    All
+  </button>
+  <button
+    className="filterButton"
+    onClick={[Function]}
+    type="button"
+  >
+    Active
+  </button>
+  <button
+    className="filterButton"
+    onClick={[Function]}
+    type="button"
+  >
+    Completed
+  </button>
+</div>
+`;

@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToDoListItem tests snapshot test 1`] = `
+<span
+  className="todoListItem"
+  data-testid="to-do-list-item"
+>
+  <div
+    className="todoListItemContent"
+    data-testid="todo-list-item-content"
+  >
+    <input
+      checked={false}
+      className="checkbox"
+      data-testid="checkbox"
+      onChange={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              SyntheticBaseEvent {
+                "_reactName": "onChange",
+                "_targetInst": null,
+                "bubbles": true,
+                "cancelable": true,
+                "currentTarget": null,
+                "defaultPrevented": false,
+                "eventPhase": 3,
+                "isDefaultPrevented": [Function],
+                "isPropagationStopped": [Function],
+                "isTrusted": false,
+                "nativeEvent": MouseEvent {
+                  "isTrusted": false,
+                },
+                "target": <input
+                  class="checkbox"
+                  data-testid="checkbox"
+                  type="checkbox"
+                />,
+                "timeStamp": 1687445938519,
+                "type": "change",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      type="checkbox"
+    />
+    test
+  </div>
+  <button
+    className="deleteBtn"
+    data-testid="delete-btn"
+    onClick={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            SyntheticBaseEvent {
+              "_reactName": "onClick",
+              "_targetInst": null,
+              "altKey": false,
+              "bubbles": true,
+              "button": 0,
+              "buttons": 0,
+              "cancelable": true,
+              "clientX": 0,
+              "clientY": 0,
+              "ctrlKey": false,
+              "currentTarget": null,
+              "defaultPrevented": false,
+              "detail": 0,
+              "eventPhase": 3,
+              "getModifierState": [Function],
+              "isDefaultPrevented": [Function],
+              "isPropagationStopped": [Function],
+              "isTrusted": false,
+              "metaKey": false,
+              "movementX": 0,
+              "movementY": 0,
+              "nativeEvent": MouseEvent {
+                "isTrusted": false,
+              },
+              "pageX": undefined,
+              "pageY": undefined,
+              "relatedTarget": null,
+              "screenX": 0,
+              "screenY": 0,
+              "shiftKey": false,
+              "target": <button
+                class="deleteBtn"
+                data-testid="delete-btn"
+                type="button"
+              >
+                <svg
+                  data-testid="delete-icon"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 16 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                  />
+                </svg>
+              </button>,
+              "timeStamp": 1687445938507,
+              "type": "click",
+              "view": null,
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    type="button"
+  >
+    <svg
+      data-testid="delete-icon"
+      fill="currentColor"
+      height="1em"
+      stroke="currentColor"
+      strokeWidth="0"
+      style={
+        Object {
+          "color": undefined,
+        }
+      }
+      viewBox="0 0 16 16"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+      />
+    </svg>
+  </button>
+</span>
+`;

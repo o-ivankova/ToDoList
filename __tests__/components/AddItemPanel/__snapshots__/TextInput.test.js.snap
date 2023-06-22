@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddItemPanel tests snapshot test 1`] = `
+<input
+  className="addItemInput"
+  data-testid="input"
+  onChange={[Function]}
+  placeholder="Type your to do"
+  type="text"
+  value=""
+/>
+`;
