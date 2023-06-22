@@ -1,5 +1,5 @@
 import React from "react";
-import "./ItemStatusFilter.scss";
+import styles from "./ItemStatusFilter.module.scss";
 import { useDispatch } from "react-redux";
 import { deleteAllCompleted } from "../../redux/toDoListSlice";
 import FilterButtons from "./components/FilterButtons/FilterButtons";
@@ -13,10 +13,10 @@ const ItemStatusFilter = () => {
   };
 
   return (
-    <span className="item-status-filter-panel">
+    <span className={styles.itemStatusFilterPanel} data-testid="status-filter-panel">
       <Counter/>
       <FilterButtons/>
-      <button className="clear-button" onClick={() => onDeleteCompleted()}>
+      <button className={styles.clearButton} onClick={() => onDeleteCompleted()} data-testid="clear-button">
         Clear completed
       </button>
     </span>

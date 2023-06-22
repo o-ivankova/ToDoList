@@ -1,0 +1,18 @@
+.itemStatusFilterPanel {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.clearButton {
+    border-style: hidden;
+    background: none;
+    color: #363636;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.clearButton:hover {
+   color: #74269b;
+}

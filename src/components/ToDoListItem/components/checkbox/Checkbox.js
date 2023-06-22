@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./checkbox.scss";
+import styles from "./checkbox.module.scss";
 
 const Checkbox = ({ completed, onCheckCompleted }) => {
   return (
-    <input type="checkbox" className='checkbox' checked={completed} onChange={onCheckCompleted} />
+    <input type="checkbox" className={styles.checkbox} checked={completed} onChange={onCheckCompleted} data-testid='checkbox'/>
   );
 };
 

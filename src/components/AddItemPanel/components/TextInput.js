@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
+import styles from  "./TextInput.module.scss";
 
-// eslint-disable-next-line react/prop-types
-const TextInput = ({ onSubmit }) => {
-  const [input, setInput] = useState("");
-
-  const onInputChange = (e) => {
-    setInput(e.target.value);
-  };
-
+const TextInput = ({ onInputChange, input }) => {
   return (
     <input
       type="text"
-      className="form-control"
+      className={styles.addItemInput}
       placeholder="Type your to do"
-      onChange={onInputChange}
+      onChange={(e) => onInputChange(e)}
       value={input}
-      onSubmit={() => onSubmit(input)}
+      data-testid="input"
     />
   );
+};
+
+TextInput.propTypes = {
+  input: PropTypes.string,
+  onInputChange: PropTypes.func,
 };
 
 export default TextInput;

@@ -1,24 +1,24 @@
-import React, { require } from "react";
-import "./ToDoListItem.scss";
+import React from "react";
+import styles from "./ToDoListItem.module.scss";
 import { BsX } from "react-icons/bs";
 import PropTypes from "prop-types";
 import Checkbox from "./components/checkbox/Checkbox";
+//import classNames from "classnames";
 
 const ToDoListItem = ({ content, completed, onDeleted, onCheckCompleted }) => {
-  let classNames = require("classnames");
-  let itemClass = classNames({
+/*   let itemClass = classNames({
     "todo-list-item": true,
     " completed": completed,
-  });
+  }); */
 
   return (
-    <span className={itemClass}>
-      <div className="todo-list-item-content">
-        <Checkbox completed={completed} onCheckCompleted={onCheckCompleted} />
+    <span className={completed? styles.todoListItemCompleted : styles.todoListItem} data-testid="to-do-list-item">
+      <div className={styles.todoListItemContent} data-testid="todo-list-item-content">
+        <Checkbox completed={completed} onCheckCompleted={onCheckCompleted}/>
         {content}
       </div>
-      <button type="button" className="delete-btn" onClick={onDeleted}>
-        <BsX />
+      <button type="button" className={styles.deleteBtn} onClick={onDeleted} data-testid="delete-btn">
+        <BsX data-testid="delete-icon"/>
       </button>
     </span>
   );

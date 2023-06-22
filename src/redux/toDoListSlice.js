@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import { saveElements, saveFilter, getElements, getFilter } from "../repository/repository";
+import { repository } from "../repository/repository";
 
 const initialState = {
-  elements: getElements(),
-  filter: getFilter(),
+  elements: repository.getElements(),
+  filter: repository.getFilter(),
 };
 
 export const toDoListSlice = createSlice({
@@ -23,7 +23,7 @@ export const toDoListSlice = createSlice({
 
         state.elements.push(newElement);
 
-        saveElements(state.elements);
+        repository.saveElements(state.elements);
       }
     },
 
@@ -31,12 +31,12 @@ export const toDoListSlice = createSlice({
       const id = action.payload;
       state.elements = state.elements.filter((el) => el.id !== id);
 
-      saveElements(state.elements);
+      repository.saveElements(state.elements);
     },
 
     deleteAllCompleted: (state) => {
       state.elements = state.elements.filter((el) => !el.completed);
-      saveElements(state.elements);
+      repository.saveElements(state.elements);
     },
 
     checkCompleted: (state, action) => {
@@ -44,14 +44,14 @@ export const toDoListSlice = createSlice({
       const index = state.elements.findIndex((el) => el.id === id);
       state.elements[index].completed = !state.elements[index].completed;
 
-      saveElements(state.elements);
+      repository.saveElements(state.elements);
     },
 
     changeFilter: (state, action) => {
       const filter = action.payload;
       state.filter = filter;
 
-      saveFilter(filter);
+      repository.saveFilter(filter);
     },
 
     reorderElements: (state, action) => {
@@ -61,7 +61,7 @@ export const toDoListSlice = createSlice({
       const [reorderedEl] = state.elements.splice(result.source.index, 1);
       state.elements.splice(result.destination.index, 0, reorderedEl);
 
-      saveElements(state.elements);
+      repository.saveElements(state.elements);
     },
   },
 });

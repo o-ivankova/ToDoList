@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addElement } from "../../redux/toDoListSlice";
-import "./AddItemPanel.scss";
+import TextInput from "./components/TextInput";
+import styles from "./AddItemPanel.module.scss";
 
 const AddItemPanel = () => {
   const dispatch = useDispatch();
 
-  const [input, setInput] = React.useState("");
+  const [input, setInput] = useState("");
 
   const onInputChange = (e) => {
     setInput(e.target.value);
@@ -14,26 +15,14 @@ const AddItemPanel = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addItem(input);
+    dispatch(addElement(input));
     setInput("");
   };
 
-  const addItem = (input) => {
-    dispatch(addElement(input));
-  };
-
   return (
-    <div className='add-item-panel'>
-    <form className="add-item-form" onSubmit={onSubmit}>
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Type your to do"
-        onChange={onInputChange}
-        value={input}
-      />
-    </form>
-    </div>
+      <form className={styles.addItemForm} onSubmit={onSubmit} data-testid="addItemForm">
+        <TextInput onInputChange={onInputChange} input={input}/>
+      </form>
   );
 };
 

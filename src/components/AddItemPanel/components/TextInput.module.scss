@@ -1,0 +1,19 @@
+.addItemInput {
+    width: 100%;
+    line-height: 35px;
+    border: 1px solid lightgrey;
+    outline-width: 1px !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border-radius: 5px;
+}
+
+.addItemInput:focus {
+    border: none;
+    outline: 1px solid #ffc2bd;
+    outline-width: 1px !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}

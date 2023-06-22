@@ -1,0 +1,21 @@
+%filterButton-shared {
+    background: none;
+    font-size: 14px;
+    border: none;
+    border-style: hidden;
+}
+
+.filterButton {
+    @extend %filterButton-shared;
+    color: grey;
+}
+
+.filterButton:hover {
+    @extend %filterButton-shared;
+    color: #363636;
+}
+
+.filterButtonActive {
+    @extend %filterButton-shared;
+   color: #74269b;
+}

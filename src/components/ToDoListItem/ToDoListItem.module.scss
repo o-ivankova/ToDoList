@@ -1,0 +1,51 @@
+.todoListItem {
+  width: 100%;
+  margin: 0px;
+  line-height: 45px;
+  border-bottom-style: groove;
+  border-width: 1px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  overflow-wrap: break-word;
+}
+
+.todoListItemCompleted {
+  width: 100%;
+  margin: 0px;
+  line-height: 45px;
+  border-bottom-style: groove;
+  border-width: 1px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  overflow-wrap: break-word;
+}
+
+.todoListItemContent {
+  user-select: none;
+  vertical-align: middle;
+  overflow-wrap: break-word;
+}
+
+.deleteBtn {
+  border-style: hidden;
+  border: 0px;
+  background-color: inherit;
+  vertical-align: middle;
+  text-align: right;
+  float: right;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.todoListItemCompleted .todoListItemContent {
+  text-decoration: line-through;
+}
+
+.todoListItem .deleteBtn:hover,
+.todoListItem .deleteBtn:focus{
+  cursor: pointer;
+ }

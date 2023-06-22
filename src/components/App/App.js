@@ -3,19 +3,19 @@ import AppHeader from "../AppHeader";
 import AddItemPanel from "../AddItemPanel";
 import ToDoList from "../ToDoList";
 import ItemStatusFilter from "../ItemStatusFilter";
-import "./App.scss";
+import styles from "./App.module.scss";
 
 const App = () => {
   return (
-    <div className="app">
-      <div className="to-do-list">
+    <div className={styles.app}>
+      <div className={styles.toDoList}>
         <AppHeader />
         <AddItemPanel />
-        <div className="rounded">
+        <div className={styles.rounded}>
           <ToDoList />
           <ItemStatusFilter />
         </div>
-        <span className="drag-and-drop-info">
+        <span className={styles.dragAndDropInfo}>
           drag and drop to reorder the list
         </span>
       </div>

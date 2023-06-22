@@ -65,6 +65,7 @@ const ToDoList = () => {
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
+            data-testid="list-group-item"
           >
             <ToDoListItem
               {...el}
@@ -86,6 +87,7 @@ const ToDoList = () => {
             className="list"
             {...provided.droppableProps}
             ref={provided.innerRef}
+            data-testid="list"
           >
             {list}
             {provided.placeholder}
