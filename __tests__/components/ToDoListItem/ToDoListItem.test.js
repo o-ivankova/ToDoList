@@ -3,7 +3,8 @@ import ToDoListItem from "../../../src/components/ToDoListItem/ToDoListItem";
 import "@testing-library/jest-dom";
 import { jest, expect, test, describe } from "@jest/globals";
 import { fireEvent, render, screen } from "@testing-library/react";
-import renderer from "react-test-renderer";
+import { Provider } from "react-redux";
+import { setupStore } from "../../../src/redux/store";
 
 describe("ToDoListItem tests", () => {
   const onDeletedMock = jest.fn();
@@ -98,16 +99,24 @@ describe("ToDoListItem tests", () => {
   });
 
   test("snapshot test", () => {
-    const domTree = renderer
-      .create(
+    const preloadedState = {
+      toDoList: {
+        filter: "all",
+        elements: [],
+      },
+    };
+    const mockStore = setupStore(preloadedState);
+    const domTree = render(
+      <Provider store={mockStore}>
         <ToDoListItem
           content={content}
           completed={false}
           onCheckCompleted={onCheckCompletedMock}
           onDeleted={onDeletedMock}
         />
-      )
-      .toJSON();
+      </Provider>
+    );
+
     expect(domTree).toMatchSnapshot();
   });
 });
