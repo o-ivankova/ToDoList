@@ -2,7 +2,6 @@ import React from "react";
 import Checkbox from "../../../src/components/ToDoListItem/components/checkbox/Checkbox";
 import { jest, expect, test, describe } from "@jest/globals";
 import { fireEvent, render, screen } from "@testing-library/react";
-//import renderer from "react-test-renderer";
 import { Provider } from "react-redux";
 import { setupStore } from "../../../src/redux/store";
 
@@ -44,11 +43,6 @@ describe("Checkbox tests", () => {
   });
 
   test("snapshot test", () => {
-    // const domTree = renderer
-    //   .create(
-    //     <Checkbox completed = {false} onCheckCompleted = {onCheckCompletedMock}/>
-    //   )
-    //   .toJSON();
     const preloadedState = {
       toDoList: {
         filter: "all",
@@ -56,6 +50,7 @@ describe("Checkbox tests", () => {
       },
     };
     const mockStore = setupStore(preloadedState);
+    
     const domTree = render(
       <Provider store={mockStore}>
         <Checkbox completed = {false} onCheckCompleted = {onCheckCompletedMock}/>
